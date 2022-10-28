@@ -22,7 +22,7 @@
   <p align="center">
     A Node.js ShareX server with user management, image hosting and more!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="#"><strong>Coming soon!</strong></a>
     <br />
     <br />
     <a href="https://github.com/markiemm/Bone/issues">Report Bug</a>

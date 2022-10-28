@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+    head
+        include ../../partials/head.pug
+    header 
+        include ../../partials/header.pug
+    body
+        <div class="hero min-h-screen">
+            <div>
+                <div class="flex justify-center flex-col-reverse md:flex-row">
+                    <div class="flex flex-col justify-center items-center text-center">
+                        <img src="/img/logo/logo.png" alt="Hero" class="w-20">
+                        <h1 class="mb-5 text-5xl font-bold">Bone</h1>
+                    </div>
+
+                </div>
+                <div class="card w-full shadow-2xl bg-base-100">
+                    <div class="card-body">
+                        <form action="/login" method="POST">
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text">Username</span>
+                                </label>
+                                    <input type="text" placeholder="username" id="username" name="username" class="input input-bordered" />
+                                </div>
+                                <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text">Password</span>
+                                </label>
+                                <input type="password" placeholder="password" id="password" name="password" class="input input-bordered" />
+                            </div>
+                            <div class="form-control mt-6">
+                                <button class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <p class="mt-6 text-center">
+                    <a href="https://github.com/markiemm/Bone" target="_blank" class="link link-hover">
+                        <i class="fa-brands fa-github"></i>
+                        <span class="ml-2">A node.js ShareX server</span>
+                    
+                    </a>
+                </p>
+            </div>
+        </div>
