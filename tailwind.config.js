@@ -28,6 +28,8 @@ module.exports = {
           "error": "#EA626F",
         },
       },
+      "dark",
+      "cupcake",
     ],
   },
 

@@ -1,0 +1,43 @@
+<tr>
+    <th>
+        <label>
+            <input id="#{domain.id}" type="checkbox" class="checkbox" />
+        </label>
+    </th>
+
+    <td>
+        <div class="flex items-center space-x-3">
+            <div class="avatar">
+            </div>
+            <div>
+                <div class="font-bold">#{domain.domain}</div>
+            </div>
+        </div>
+    </td>
+
+    <td>
+        <div class="flex items-center space-x-3">
+            <button id="edit-#{domain.id}" class="btn btn-sm btn-primary">Edit</button>
+            <button id="delete-#{domain.id}" class="btn btn-sm btn-error">Delete</button>
+        </div>
+    </td>
+
+</tr>
+
+script.
+
+
+    $('#delete-#{domain.id}').on('click', function() {
+        const domainId = "#{domain.id}";
+        const domain = "#{domain.domain}";
+
+        $.ajax({
+            url: `/dashboard/domains/delete/${domainId}`,
+            type: 'DELETE',
+            success: function(result) {
+                location.reload()
+            }
+        })
+    })
+
+

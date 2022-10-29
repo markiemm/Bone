@@ -1,0 +1,41 @@
+
+<input type="checkbox" id="addDomainModal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label for="addDomainModal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="text-lg font-bold">Add domain</h3>
+    <div class="mt-4">
+      <label class="block">
+        <span class="text-base-500">Domain</span>
+        <input type="text" id="domain" name="domain" class="input input-bordered mt-1 block w-full" placeholder="example.com" />
+        <p class="text-sm text-red-500 mt-1" id="domainError"></p>
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="label cursor-pointer">
+        <span class="label-text">Active</span> 
+        <input id="isActive" type="checkbox" checked="checked" class="checkbox checkbox-lg" />
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="label cursor-pointer">
+        <span class="label-text">Set as default</span> 
+        <input id="isDefault" type="checkbox" class="checkbox checkbox-lg" />
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="label cursor-pointer">
+        <span class="label-text">HTTPS</span> 
+        <input id="HTTPS" type="checkbox" class="checkbox checkbox-lg" />
+      </label>
+    </div>
+
+    <div class="modal-action">
+      <button class="btn btn-primary" id="addDomainBtn" disabled>Add</button>
+    </div>
+
+  </div>
+</div>
