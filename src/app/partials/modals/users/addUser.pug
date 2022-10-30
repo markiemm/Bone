@@ -1,0 +1,43 @@
+
+<input type="checkbox" id="addUserModal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label for="addUserModal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="text-lg font-bold">Add User</h3>
+    <div class="mt-4">
+      <label class="block">
+        <span class="text-base-500">Username</span>
+        <input type="text" id="username" name="username" class="input input-bordered mt-1 block w-full" placeholder="Username" />
+        <p class="text-sm text-red-500 mt-1" id="usernameError"></p>
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="block">
+        <span class="text-base-500">Email</span>
+        <input type="email" id="email" name="email" class="input input-bordered mt-1 block w-full" placeholder="Email" />
+        <p class="text-sm text-red-500 mt-1" id="emailError"></p>
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="block">
+        <span class="text-base-500">Password</span>
+        <input type="password" id="password" name="password" class="input input-bordered mt-1 block w-full" placeholder="Password" />
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="label cursor-pointer">
+        <span class="label-text">Admin <i class="fas fa-shield-alt"></i></span>
+        <input id="admin" type="checkbox" class="checkbox checkbox-lg" />
+      </label>
+    </div>
+
+
+    <div class="modal-action">
+      <button class="btn btn-primary" id="addUserBtn">Add user</button>
+    </div>
+
+  </div>
+</div>

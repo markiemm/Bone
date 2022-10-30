@@ -13,6 +13,33 @@ const Schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    admin: {
+        type: Boolean,
+        required: true
+    },
+    
+    quota: {
+        type: Number
+    },
+
+    domains: [{
+        type: ObjectId,
+        ref: 'Domain'
+    }],
+
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+
+    updatedAt: {
+        type: Date,
+        default: Date.now
+    }
+
+
+
+
 });
 
 const Entry = mongoose.model('users', Schema);
