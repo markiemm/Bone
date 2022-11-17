@@ -25,12 +25,15 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "i": "^0.3.7",
     "moment": "^2.29.4",
     "mongoose": "^6.7.0",
     "nodemon": "^2.0.20",
+    "npm": "^8.19.2",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "randomstring": "^1.2.3"
   },
   "devDependencies": {
     "tailwindcss": "^3.2.1"

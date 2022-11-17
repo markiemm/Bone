@@ -4,6 +4,7 @@ const { checkAuthenticated, checkNotAuthenticated } = require('../../../middlewa
 const domainModal = require('../../../models/domains');
 const userModal = require('../../../models/users');
 const bcrypt = require('bcrypt');
+const randomstring = require('randomstring');
 
 usersRouter.get('/',
 checkAuthenticated,
@@ -23,13 +24,16 @@ checkAuthenticated,
     const { username, email, password, admin } = req.body;
 
     const hashedPassword = bcrypt.hashSync(password, 10);
+    const GeneratedApiKey = randomstring.generate(32);
 
 
     const newUser = new userModal({
         username: username,
         email: email,
         password: hashedPassword,
-        admin: admin
+        admin: admin,
+        api_key: GeneratedApiKey
+        
     });
 
     newUser.save((err) => {

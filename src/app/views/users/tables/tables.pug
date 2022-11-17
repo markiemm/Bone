@@ -12,9 +12,9 @@
             <div class="font-bold">#{account.username}</div>
             <div class="text-sm opacity-50">#{account.email}</div>
             if account.admin
-                div.text-sm.text-red-500 Admin
+                div.badge.badge-warning Admin
             else
-                div.text-sm.text-green-500 User
+                div.badge.badge-primary User
         </div>
     </div>
     </td>
@@ -28,7 +28,7 @@
             
             <div class="stat">
                 <div class="stat-title">Quota</div>
-                <div class="stat-value">1mb/unlimited</div>
+                <div class="stat-value text-sm">1mb/unlimited</div>
             </div>
             
         </div>

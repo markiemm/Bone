@@ -10,7 +10,6 @@ checkAuthenticated,
         if (err) {
             console.log(err);
         } else {
-            console.log(domains);
             res.render('domains/index', {
                 domains: domains,
                 user: req.user

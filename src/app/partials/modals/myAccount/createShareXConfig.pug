@@ -1,0 +1,79 @@
+
+<input type="checkbox" id="ShareXConfigModal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label for="ShareXConfigModal" class="btn btn-sm btn-error btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="text-lg font-bold">Create ShareX config</h3>
+
+    <div class="mt-4">
+
+        <label class="block">
+            <span class="text-base-500">Name</span>
+            <input for="input" type="text" id="name" name="name" class="input input-bordered mt-1 block w-full" placeholder="My upload" />
+        </label>
+    </div>
+
+    // destination type
+
+    <div class="mt-4">
+        <label class="block">
+            <span class="text-base-500">Destination type</span>
+            <select for="input" id="destinationType" name="destinationType" class="input input-bordered mt-1 block w-full">
+                <option value="ImageUploader, TextUploader, FileUploader">Image, Text and File uploader</option>
+                <option value="ImageUploader">Image uploader</option>
+                <option value="TextUploader">Text uploader</option>
+                <option value="FileUploader">File uploader</option>
+            </select>
+        </label>
+    </div>
+
+    // domain
+
+    <div class="mt-4">
+        <label class="block">
+            <span class="text-base-500">Domain</span>
+            <select for="input" id="domain" class="select select-bordered w-full max-w-xs">
+                <option disabled selected>Select one</option>
+                for domain in domains
+                    option(value=domain.id)= domain.domain
+                    
+            </select>
+        </label>
+    </div>
+
+
+    <div class="modal-action">
+      <button class="btn btn-primary" id="createConfig">Download</button>
+    </div>
+
+  </div>
+</div>
+
+script.
+
+    const createConfigBtn = document.getElementById('createConfig');
+    createConfigBtn.addEventListener('click', () => {
+        const nameValue = document.getElementById('name').value;
+        const destinationTypeValue = document.getElementById('destinationType').value;
+        const domainValue = document.getElementById('domain').value;
+
+        if (nameValue && destinationTypeValue && domainValue !== 'Select one') {
+            fetch('/myAccount/createShareXConfig', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: nameValue,
+                    destinationType: destinationTypeValue,
+                    domain: domainValue
+                })
+            }).then(res => res.json()).then(data => {
+                if (data.success) {
+                    window.location.reload();
+                }
+            })
+        } else {
+            alert('Please fill in all fields');
+        }
+    })

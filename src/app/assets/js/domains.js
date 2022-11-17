@@ -13,7 +13,7 @@ domain.addEventListener('input', function (event) {
         
     } else {
         addDomainBtn.disabled = true;
-        domainError.innerHTML = 'Please enter a valid domain name without http:// or https:// (e.g. example.com)';
+        domainError.innerHTML = 'Please enter a valid domain name without http:// or https:// (e.g. example.com | image.example.com)';
     }
 });
 

@@ -35,6 +35,10 @@ const Schema = new mongoose.Schema({
     updatedAt: {
         type: Date,
         default: Date.now
+    },
+
+    api_key: {
+        type: String
     }
 
 
