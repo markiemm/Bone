@@ -10,7 +10,7 @@ mainRouter.use('/login', require('./auth/login'));
 mainRouter.use('/logout', require('./auth/logout'));
 
 
-// mainRouter.use('/api', require('./API/apiRouter'));
+mainRouter.use('/api', require('./API/apiRouter'));
 
 
 mainRouter.get('*', (req, res) => {

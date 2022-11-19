@@ -1,53 +1,46 @@
 
-<input type="checkbox" id="ShareXConfigModal" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box relative">
-    <label for="ShareXConfigModal" class="btn btn-sm btn-error btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="text-lg font-bold">Create ShareX config</h3>
+input.modal-toggle(type="checkbox" id="ShareXConfigModal")
+div.modal
 
-    <div class="mt-4">
+    div.modal-box.relative
 
-        <label class="block">
-            <span class="text-base-500">Name</span>
-            <input for="input" type="text" id="name" name="name" class="input input-bordered mt-1 block w-full" placeholder="My upload" />
-        </label>
-    </div>
+        label.btn.btn-sm.btn-error.btn-circle.absolute.right-2.top-2(for="ShareXConfigModal") X
+        h3.text-lg.font-bold Create ShareX config
+        
+        div.mt-4
 
-    // destination type
-
-    <div class="mt-4">
-        <label class="block">
-            <span class="text-base-500">Destination type</span>
-            <select for="input" id="destinationType" name="destinationType" class="input input-bordered mt-1 block w-full">
-                <option value="ImageUploader, TextUploader, FileUploader">Image, Text and File uploader</option>
-                <option value="ImageUploader">Image uploader</option>
-                <option value="TextUploader">Text uploader</option>
-                <option value="FileUploader">File uploader</option>
-            </select>
-        </label>
-    </div>
-
-    // domain
-
-    <div class="mt-4">
-        <label class="block">
-            <span class="text-base-500">Domain</span>
-            <select for="input" id="domain" class="select select-bordered w-full max-w-xs">
-                <option disabled selected>Select one</option>
-                for domain in domains
-                    option(value=domain.id)= domain.domain
-                    
-            </select>
-        </label>
-    </div>
+            label.block
+                span.text-base-500 Name
+                input.input.input-bordered.mt-1.block.w-full(for="input" type="text" id="name" name="name" placeholder="My upload")
 
 
-    <div class="modal-action">
-      <button class="btn btn-primary" id="createConfig">Download</button>
-    </div>
+        // destination type
 
-  </div>
-</div>
+        div.mt-4
+            label.block
+                span.text-base-500 Destination type
+                select.input.input-bordered.mt-1.block.w-full(for="input" id="destinationType" name="destinationType")
+                    option(value="ImageUploader, TextUploader, FileUploader") Image, Text and File uploader
+                    option(value="ImageUploader") Image uploader
+                    option(value="TextUploader") Text uploader
+                    option(value="FileUploader") File uploader
+
+
+        // domain
+
+        div.mt-4
+            label.block
+                span.text-base-500 Domain
+                select.select.select-bordered.w-full.max-w-xs(for="input" id="domain")
+                    option(disabled selected) Select one
+                    for domain in domains
+                        option(value=domain.id)= domain.domain
+                        
+
+
+        div.modal-action
+            button.btn.btn-primary(id="createConfig") Download
+
 
 script.
 

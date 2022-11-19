@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const initializePassport = require('./src/server/config/passport');
 const bodyParser = require('body-parser');
 const db = require('./src/server/config/db');
+const expressFileUpload = require('express-fileupload');
 const port = 8080
 
 
@@ -45,6 +46,9 @@ initializePassport(
 );
 
 app.use(flash())
+
+app.use(expressFileUpload());
+
 
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');

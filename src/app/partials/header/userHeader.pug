@@ -1,0 +1,32 @@
+div.navbar.bg-base-200
+    div.navbar-start
+        a.btn.btn-ghost.normal-case.text-xl(href="/")
+            div.flex.items-center
+                img.w-8.h-8.mr-2(src="/img/logo/logo.png")
+                span.text-2xl Bone
+
+
+        if (user)
+            div.navbar-item.ml-10
+                
+                a.btn.btn-ghost.normal-case.text-lg(href="/dashboard")
+                    div.flex.items-center.gap-3
+                        span
+                            i.fas.fa-dashboard
+                        span Dashboard
+
+
+    if (user)
+
+        div.navbar-end
+            div.navbar-item
+                div.dropdown.dropdown-end
+                    label.btn.btn-ghost(tabindex="0")
+                        h1.text-xl.font-bold #{user.username} 
+                            i.fas.fa-caret-down
+
+                    ul.menu.menu-compact.dropdown-content.mt-3.p-2.shadow.bg-base-200.rounded-box.w-52(tabindex="0")
+                        li
+                            a(href="/myaccount") My Account
+                        li
+                            a(href="/logout") Logout
