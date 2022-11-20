@@ -1,48 +1,36 @@
 doctype html
-html(lang="en" data-theme="cupcake")
+html(lang="en" data-theme="light")
     head
         include ../../partials/head.pug
-    header 
-        include ../../partials/header.pug
-    body
+    body.bg-base-200
         include ../../partials/alerts/banner.pug
-        <div class="hero min-h-screen">
-            <div>
-                <div class="flex justify-center flex-col-reverse md:flex-row">
-                    <div class="flex flex-col justify-center items-center text-center">
-                        <img src="/img/logo/logo.png" alt="Hero" class="w-20">
-                        <h1 class="mb-5 text-5xl font-bold">Bone</h1>
-                    </div>
+        div.hero.min-h-screen
+            div
+                div.flex.justify-center.flex-col-reverse(class="md:flex-row")
+                    div.flex.flex-col.justify-center.items-center.text-center
+                        img.w-20(src="/img/logo/logo.png" alt="Hero")
+                        h1.mb-5.text-5xl.font-bold.bg-clip-text.text-transparent.bg-gradient-to-r.from-cyan-400.to-purple-400
+                            | Bone
 
-                </div>
-                <div class="card w-full shadow-2xl bg-base-100">
-                    <div class="card-body">
-                        <form action="/login" method="POST">
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Username</span>
-                                </label>
-                                    <input type="text" placeholder="username" id="username" name="username" class="input input-bordered" />
-                                </div>
-                                <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Password</span>
-                                </label>
-                                <input type="password" placeholder="password" id="password" name="password" class="input input-bordered" />
-                            </div>
-                            <div class="form-control mt-6">
-                                <button class="btn btn-primary">Login</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                div.card.w-full.shadow-2xl.bg-base-100
+                    div.card-body
+                        form(action="/login" method="POST")
+                            div.form-control
+                                label.label
+                                    span.label-text Username
+                                input.input.input-bordered(type="text" placeholder="username" id="username" name="username")
 
-                <p class="mt-6 text-center">
-                    <a href="https://github.com/markiemm/Bone" target="_blank" class="link link-hover">
-                        <i class="fa-brands fa-github"></i>
-                        <span class="ml-2">A node.js ShareX server</span>
-                    
-                    </a>
-                </p>
-            </div>
-        </div>
+                                div.form-control
+                                label.label
+                                    span.label-text Password
+
+                                input.input.input-bordered(type="password" placeholder="password" id="password" name="password")
+
+                            div.form-control.mt-6
+                                button.btn.btn-primary Login
+
+
+                p.mt-6.text-center
+                    a.link.link-hover(href="https://github.com/markiemm/Bone" target="_blank")
+                        i.fa-brands.fa-github
+                        span.ml-2 A node.js ShareX server

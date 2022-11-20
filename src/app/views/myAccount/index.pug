@@ -1,112 +1,79 @@
 doctype html
-html(lang="en" data-theme="dark")
+html(lang="en" data-theme="light")
     head
         include ../../partials/head.pug
     header 
-        include ../../partials/header.pug
+        include ../../partials/header/userHeader.pug
     body
         include ../../partials/alerts/banner.pug
 
 
-        <div class="w-full px-40 py-24">
+        div.w-full.px-40.py-24
 
-            <div class="bg-base-200 p-10 rounded-xl">
+            div.bg-base-200.p-10.rounded-xl
 
-                <h1 class="text-2xl font-bold">My Account</h1>
-
-
-                <div class="px-5 py-5 mt-5 bg-base-100 rounded-xl">
-
-                    <div class="flex justify-between">
-
-                        <div class="flex flex-col">
-
-                            <h1 class="text-2xl font-bold">Markiemm</h1>
-                            <p class="text-base">test@gmail.com</p>
-
-                        </div>
-
-                        <div class="flex flex-col">
-
-                            <h1 class="text-2xl font-bold">5</h1>
-                            <p class="text-base">Uploads</p>
-
-                        </div>
-
-                        <div class="flex flex-col">
-
-                            <h1 class="text-2xl font-bold">1mb/unlimited</h1>
-                            <p class="text-base">Quota</p>
-                            <div class="flex justify-center">
-                                <progress class="progress progress-primary w-56" value="60" max="100"></progress>
-                            </div>
-
-                        </div>
-
-                    </div>
+                h1.text-2xl.font-bold My Account
 
 
-                    <div class="mt-5">
+                div.px-5.py-5.mt-5.bg-base-100.rounded-xl
 
-                        <button class="btn btn-primary">Change Password</button>
+                    div.flex.justify-between
 
-                    </div> 
-                </div>
+                        div.flex.flex-col
+
+                            h1.text-2xl.font-bold Markiemm
+                            p.text-base test@gmail.com
+
+
+                        div.flex.flex-col
+
+                            h1.text-2xl.font-bold.mb-2 1mb/unlimited
+                            p.text-base Quota
+                            div.flex.justify-center
+                                progress.progress.progress-primary.w-56(value="60" max="100")
+
+                    div.mt-5
+
+                        button.btn.btn-primary Change Password
+
+
+                div.px-5.py-5.mt-5.bg-base-100.rounded-xl
+
+                    h1.text-2xl.font-bold API key
+
+                    div.mt-5
+
+                        div.form-control
+                            div.input-group
+                                input.input.w-full.input-bordered(type="text" value="#{user.api_key}" readonly)
+                                button.btn.btn-primary.btn-square
+                                    i.fa-solid.fa-clipboard.fa-xl
+
+
+                        button.btn.btn-primary.mt-5 Generate new key
+
+
+                div.px-5.py-5.mt-5.bg-base-100.rounded-xl
+                    h1.text-2xl.font-bold Create config
+
+                    div.flex.flex-row.gap-5.mt-5
+                        div.p-5.w-full.border-2.border-dashed.border-base-300.rounded-xl
+                            h1.text-xl.font-bold ShareX
+                            label.btn.btn-primary.mt-5(for="ShareXConfigModal") Get started
+
+
+                        div.p-5.w-full.border-2.border-dashed.border-base-300.rounded-xl
+                            h1.text-xl.font-bold Coming soon
+                            p.text-base Other options coming soon...
+
             
-
-                <div class="px-5 py-5 mt-5 bg-base-100 rounded-xl">
-
-                    <h1 class="text-2xl font-bold">API key</h1>
-
-                    <div class="mt-5">
-
-                        <div class="form-control">
-                            <div class="input-group">
-                                <input type="text" value="#{user.api_key}" readonly class="input w-full input-bordered" />
-                                <button class="btn btn-primary btn-square">
-                                    <i class="fa-solid fa-clipboard fa-xl"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary mt-5">Generate new key</button>
-
-                        
-
-                    </div>  
-                </div>
-
-                <div class="px-5 py-5 mt-5 bg-base-100 rounded-xl">
-                    <h1 class="text-2xl font-bold">Create config</h1>
-
-                    <div class="flex flex-row gap-5 mt-5">
-                        <div class="p-5 w-full border-2 border-dashed border-base-300 rounded-xl">
-                            <h1 class="text-xl font-bold">ShareX</h1>
-                            <label for="ShareXConfigModal" class="btn btn-primary mt-5">Get started</label>
-                        </div>
-
-                        <div class="p-5 w-full border-2 border-dashed border-base-300 rounded-xl">
-                            <h1 class="text-xl font-bold">Coming soon</h1>
-                            <p class="text-base">Other options coming soon...</p>
-                        </div>
-
-                    </div>
-                </div>
-            
-                <div class="px-5 py-5 mt-5 bg-base-100 rounded-xl">
+                div.px-5.py-5.mt-5.bg-base-100.rounded-xl
                     
-                    <h1 class="text-2xl font-bold">Delete Account</h1>
+                    h1.text-2xl.font-bold Delete Account
 
-                    <div class="mt-5">
+                    div.mt-5
 
-                        <button class="btn btn-error">Delete Account</button>
-
-                    </div>
-                </div>
-            
-            
-            </div>
-        </div>
+                        button.btn.btn-error Delete Account
 
 
         include ../../partials/modals/myAccount/createShareXConfig.pug

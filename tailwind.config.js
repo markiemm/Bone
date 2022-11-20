@@ -30,6 +30,7 @@ module.exports = {
       },
       "dark",
       "cupcake",
+      "light",
     ],
   },
 
