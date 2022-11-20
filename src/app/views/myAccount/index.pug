@@ -21,8 +21,8 @@ html(lang="en" data-theme="light")
 
                         div.flex.flex-col
 
-                            h1.text-2xl.font-bold Markiemm
-                            p.text-base test@gmail.com
+                            h1.text-2xl.font-bold #{user.username}
+                            p.text-base #{user.email}
 
 
                         div.flex.flex-col
@@ -45,7 +45,7 @@ html(lang="en" data-theme="light")
 
                         div.form-control
                             div.input-group
-                                input.input.w-full.input-bordered(type="text" value="#{user.api_key}" readonly)
+                                input.input.w-full.input-bordered(type="text" value=user.api_key readonly)
                                 button.btn.btn-primary.btn-square
                                     i.fa-solid.fa-clipboard.fa-xl
 

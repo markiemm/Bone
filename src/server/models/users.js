@@ -22,11 +22,6 @@ const Schema = new mongoose.Schema({
         type: Number
     },
 
-    domains: [{
-        type: ObjectId,
-        ref: 'Domain'
-    }],
-
     createdAt: {
         type: Date,
         default: Date.now
