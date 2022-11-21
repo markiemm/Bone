@@ -8,8 +8,5 @@ checkAuthenticated,
     res.render('dashboard/index', { user: req.user });
 });
 
-dashboardRouter.use('/domains', require('./domains/domainsRouter'));
-dashboardRouter.use('/users', require('./users/usersRouter'));
-
 
 module.exports = dashboardRouter;

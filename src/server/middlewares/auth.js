@@ -11,5 +11,12 @@ module.exports = {
             return next();
         }
         res.redirect('/');
+    },
+
+    checkAdmin: (req, res, next) => {
+        if (req.isAuthenticated() && req.user.admin) {
+            return next();
+        }
+        res.redirect('/');
     }
 }

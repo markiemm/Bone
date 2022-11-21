@@ -1,28 +1,22 @@
-<tr>
-    <th>
-        <label>
-            <input id="#{domain.id}" type="checkbox" class="checkbox" />
-        </label>
-    </th>
+tr
+    th
+        label
+            input.checkbox(id="#{domain.id}" type="checkbox")
 
-    <td>
-        <div class="flex items-center space-x-3">
-            <div class="avatar">
-            </div>
-            <div>
-                <div class="font-bold">#{domain.domain}</div>
-            </div>
-        </div>
-    </td>
 
-    <td>
-        <div class="flex items-center space-x-3">
-            <button id="edit-#{domain.id}" class="btn btn-sm btn-primary">Edit</button>
-            <button id="delete-#{domain.id}" class="btn btn-sm btn-error">Delete</button>
-        </div>
-    </td>
+    td
+        div.flex.items-center.space-x-3
+            div.avatar
 
-</tr>
+            div.flex.justify-between.gap-2
+                span.badge.badge-secondary #{domain.HTTPS ? "HTTPS" : "HTTP"}
+                span.font-bold #{domain.domain}
+
+
+    td
+        div.flex.items-center.space-x-3
+            button.btn.btn-sm.btn-primary(id="edit-#{domain.id}") Edit
+            button.btn.btn-sm.btn-error(id="delete-#{domain.id}") Delete
 
 script.
 

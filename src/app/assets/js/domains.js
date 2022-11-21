@@ -22,7 +22,7 @@ addDomainBtn.addEventListener('click', function (event) {
     addDomainBtn.innerHTML = 'Adding...';
     addDomainBtn.classList.add('loading');
     $.ajax({
-        url: '/dashboard/domains/add',
+        url: '/admin/domains/add',
         type: 'POST',
         data: {
             domain: domain.value,
@@ -31,7 +31,7 @@ addDomainBtn.addEventListener('click', function (event) {
             HTTPS: HTTPS.checked
         },
         success: function (result) {
-            window.location.href = '/dashboard/domains';
+            window.location.href = '/admin/domains';
         },
 
         error: function (result) {

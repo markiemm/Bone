@@ -6,27 +6,33 @@ div.navbar.bg-base-200
                 span.text-2xl Bone
 
 
-        if (user)
-            div.navbar-item.ml-10
-                
-                a.btn.btn-ghost.normal-case.text-lg(href="/dashboard")
-                    div.flex.items-center.gap-3
-                        span
-                            i.fas.fa-dashboard
-                        span Dashboard
+        
+        div.navbar-item.ml-10
+            
+            a.btn.btn-ghost.normal-case.text-lg(href="/dashboard")
+                div.flex.items-center.gap-3
+                    span
+                        i.fas.fa-dashboard
+                    span Dashboard
 
 
-    if (user)
+    
 
-        div.navbar-end
-            div.navbar-item
-                div.dropdown.dropdown-end
-                    label.btn.btn-ghost(tabindex="0")
-                        h1.text-xl.font-bold #{user.username} 
-                            i.fas.fa-caret-down
+    div.navbar-end
+        div.navbar-item
+            a.btn.btn-ghost.normal-case.text-lg.glass(href="/admin")
+                div.flex.items-center.gap-3
+                    span
+                        i.fas.fa-shield
+                    span Admin
+        div.navbar-item
+            div.dropdown.dropdown-end
+                label.btn.btn-ghost(tabindex="0")
+                    h1.text-xl.font-bold #{user.username} 
+                        i.fas.fa-caret-down
 
-                    ul.menu.menu-compact.dropdown-content.mt-3.p-2.shadow.bg-base-200.rounded-box.w-52(tabindex="0")
-                        li
-                            a(href="/myaccount") My Account
-                        li
-                            a(href="/logout") Logout
+                ul.menu.menu-compact.dropdown-content.mt-3.p-2.shadow.bg-base-200.rounded-box.w-52(tabindex="0")
+                    li
+                        a(href="/myaccount") My Account
+                    li
+                        a(href="/logout") Logout
