@@ -7,8 +7,6 @@ myAccountRouter.get('/', (req, res) => {
 
     Promise.all([domain_model]).then((results) => {
 
-        console.log(results[0]);
-
         res.render('myAccount/index',
             {
                 user: req.user,

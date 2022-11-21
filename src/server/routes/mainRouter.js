@@ -6,6 +6,7 @@ mainRouter.use('/', require('./main/landingRouter'));
 mainRouter.use('/dashboard', require('./main/dashboardRouter'));
 mainRouter.use('/myaccount', require('./myAccount/myAccountRouter'));
 mainRouter.use('/admin', require('./admin/adminRouter'));
+mainRouter.use('/upload', require('./upload/uploadRouter'));
 
 
 mainRouter.use('/login', require('./auth/login'));

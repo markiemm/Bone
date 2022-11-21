@@ -14,24 +14,13 @@ div.modal
                 input.input.input-bordered.mt-1.block.w-full(for="input" type="text" id="name" name="name" placeholder="My upload")
 
 
-        // destination type
-
-        div.mt-4
-            label.block
-                span.text-base-500 Destination type
-                select.input.input-bordered.mt-1.block.w-full(for="input" id="destinationType" name="destinationType")
-                    option(value="ImageUploader, TextUploader, FileUploader") Image, Text and File uploader
-                    option(value="ImageUploader") Image uploader
-                    option(value="TextUploader") Text uploader
-                    option(value="FileUploader") File uploader
-
 
         // domain
 
         div.mt-4
             label.block
                 span.text-base-500 Domain
-                select.select.select-bordered.w-full.max-w-xs(for="input" id="domain")
+                select.input.input-bordered.mt-1.block.w-full(for="input" id="domain")
                     option(disabled selected) Select one
                     for domain in domains
                         option(value=domain.id)= domain.domain
