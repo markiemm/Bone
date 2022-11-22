@@ -10,7 +10,7 @@ checkAuthenticated,
         if (err) {
             console.log(err);
         } else {
-            res.render('domains/index', {
+            res.render('admin/domains/index', {
                 domains: domains,
                 user: req.user
             });

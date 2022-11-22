@@ -44,9 +44,11 @@ html(lang="en" data-theme="light")
 
                         div.form-control
                             div.input-group
-                                input.input.w-full.input-bordered(type="text" value=user.api_key readonly)
+                                input.input.w-full.input-bordered.blur-sm(type="text" id="blurBox" value=user.api_key readonly)
                                 button.btn.btn-primary.btn-square
                                     i.fa-solid.fa-clipboard.fa-xl
+                                button.btn.btn-primary.btn-square(id= "blurBtn")
+                                    i.fa-solid.fa-eye-slash.fa-xl
 
 
                         button.btn.btn-primary.mt-5 Generate new key
@@ -76,3 +78,16 @@ html(lang="en" data-theme="light")
 
 
         include ../../partials/modals/myAccount/createShareXConfig.pug
+
+        script.
+            const blurBtn = document.getElementById('blurBtn');
+            const blurBox = document.getElementById('blurBox');
+            blurBtn.addEventListener('click', () => {
+                if (blurBox.classList.contains('blur-sm')) {
+                    blurBox.classList.remove('blur-sm');
+                    blurBtn.innerHTML = '<i class="fa-solid fa-eye fa-xl"></i>';
+                } else {
+                    blurBox.classList.add('blur-sm');
+                    blurBtn.innerHTML = '<i class="fa-solid fa-eye-slash fa-xl"></i>';
+                }
+            });

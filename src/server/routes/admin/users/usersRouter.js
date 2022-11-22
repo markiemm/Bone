@@ -13,7 +13,7 @@ checkAuthenticated,
         if (err) {
             console.log(err);
         } else {
-            res.render('users/index', { accounts: accounts, user: req.user });
+            res.render('admin/users/index', { accounts: accounts, user: req.user });
         }
     });
 });
