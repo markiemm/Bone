@@ -23,10 +23,16 @@ myAccountRouter.post('/create-sharex-config', (req, res) => {
 
     const sharex_config = {
         "Name": title,
-        "DestinationType": "ImageUploader, FileUploader",
+        "DestinationType": "ImageUploader, TextUploader, FileUploader",
         "RequestType": "POST",
-        "RequestURL": "https://api." + domain + "/upload",
+        "RequestURL": "https://" + domain + "/upload",
         "FileFormName": "upload",
+        "Arguments": {
+            "file": "$filename$",
+            "text": "$input$",
+        },
+        "URL": "$json:url$",
+        "ThumbnailURL": "$json:url$/raw"
     };
 
     res.setHeader('Content-disposition', 'attachment; filename=' + title + '.sxcu');
