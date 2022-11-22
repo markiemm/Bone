@@ -23,7 +23,7 @@ div.modal
                 select.input.input-bordered.mt-1.block.w-full(for="input" id="domain")
                     option(disabled selected) Select one
                     for domain in domains
-                        option(value=domain.id)= domain.domain
+                        option(value=domain.domain)= domain.domain
                         
 
 
@@ -36,24 +36,28 @@ script.
     const createConfigBtn = document.getElementById('createConfig');
     createConfigBtn.addEventListener('click', () => {
         const nameValue = document.getElementById('name').value;
-        const destinationTypeValue = document.getElementById('destinationType').value;
         const domainValue = document.getElementById('domain').value;
 
-        if (nameValue && destinationTypeValue && domainValue !== 'Select one') {
-            fetch('/myAccount/createShareXConfig', {
+        if (nameValue && domainValue !== 'Select one') {
+            fetch('/myAccount/create-sharex-config', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     name: nameValue,
-                    destinationType: destinationTypeValue,
                     domain: domainValue
                 })
             }).then(res => res.json()).then(data => {
-                if (data.success) {
-                    window.location.reload();
-                }
+                const dataParse = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 4));
+                const downloadAnchorNode = document.createElement('a');
+                downloadAnchorNode.setAttribute("href", dataParse);
+                downloadAnchorNode.setAttribute("download","ShareX config - " + nameValue + ".sxcu");
+                document.body.appendChild(downloadAnchorNode);
+                downloadAnchorNode.click();
+                downloadAnchorNode.remove();
+
+
             })
         } else {
             alert('Please fill in all fields');

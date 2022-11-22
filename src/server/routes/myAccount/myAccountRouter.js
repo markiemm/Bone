@@ -16,6 +16,27 @@ myAccountRouter.get('/', (req, res) => {
     });
 });
 
+myAccountRouter.post('/create-sharex-config', (req, res) => {
+    const title = req.body.name;
+    const domain = req.body.domain;
+    console.log(req.body);
+
+    const sharex_config = {
+        "Name": title,
+        "DestinationType": "ImageUploader, FileUploader",
+        "RequestType": "POST",
+        "RequestURL": "https://api." + domain + "/upload",
+        "FileFormName": "upload",
+    };
+
+    res.setHeader('Content-disposition', 'attachment; filename=' + title + '.sxcu');
+    res.setHeader('Content-type', 'application/json');
+    res.write(JSON.stringify(sharex_config));
+    res.end();
+});
+
+
+
 
 
 module.exports = myAccountRouter;
