@@ -1,49 +1,84 @@
 const express = require('express');
 const postAPIRouter = express.Router();
 const postModel = require('../../models/posts');
+const userModel = require('../../models/users');
 
 
 
 postAPIRouter.post('/', (req, res) => {
-    console.log(req.files.upload);
-    console.log(req.body);
-    const fileName = req.files.upload.name;
-    const filePath = `./uploads/${fileName}`;
-    const file = req.files.upload;
     const post_model = postModel.find({domain: req.headers.host});
+    const user_model = userModel.find({api_key: req.headers.api_key});
 
-    Promise.all([post_model]).then((result) => {
+    Promise.all([post_model, user_model]).then((values) => {
+        const fileName = req.files.upload.name;
+        const file = req.files.upload;
+        const filePath = `./src/server/storage/${values[1][0].id}/${fileName}`;
 
-        if (result[0].length === 0) {
 
-
-
-
-            const create_Database_Entry = async () => {
-                const newPost = new postModel({
-                    type: file.mimetype,
-                    path: filePath,
-                    name: fileName,
-                    date: Date.now(),
-                    user: req.body.user,
-                    size: file.size
-                });
-                await newPost.save();
-            };
-
-            file.mv(filePath, (err) => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).send(err);
-                } else {
-                    create_Database_Entry();
-                    res.send({"status": "success", "url": `${result[0][0].HTTPS ? 'https' : 'http'}://${result[0][0].domain}/${fileName}`});
-                }
+        const create_Database_Entry = async () => {
+            const newPost = new postModel({
+                type: file.mimetype,
+                path: filePath,
+                name: fileName,
+                date: Date.now(),
+                user: values[1][0].id,
+                size: file.size
             });
+            await newPost.save();
+        };
 
-        } else {
-            res.status(400).send('Uploading to this domain is not allowed, if you are the administator then create the domain in the admin panel');
-        }
+        switch (file.mimetype) {
+            case 'image/jpeg':
+            case 'image/png':
+            case 'image/gif': 
+                file.mv(filePath, (err) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send(err);
+                    } else {
+                        create_Database_Entry();
+                        res.send('File uploaded!');
+                    }
+                });
+                break;
+            case 'video/mp4':
+            case 'video/webm':
+            case 'video/ogg':
+            case 'video/avi':
+            case 'video/mov':
+            case 'video/wmv':
+            case 'video/flv':
+            case 'video/mkv':
+                file.mv(filePath, (err) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send(err);
+                    } else {
+                        create_Database_Entry();
+                        res.send('File uploaded!');
+                    }
+                });
+                break;
+            case 'text/plain':
+            case 'text/html':
+            case 'text/css':
+            case 'text/javascript':
+            case 'text/json':
+            case 'text/xml':
+            case 'text/yaml':
+            case 'text/csv':
+            case 'text/markdown':
+                file.mv(filePath, (err) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send
+                    } else {
+                        create_Database_Entry();
+                        res.send('File uploaded!');
+                    }
+                });
+                break;
+            }
 
     });
 });

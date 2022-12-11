@@ -1,8 +1,9 @@
 const express = require('express');
 const myAccountRouter = express.Router();
 const domainModel = require('../../models/domains');
+const { checkAuthenticated } = require('../../middlewares/auth');
 
-myAccountRouter.get('/', (req, res) => {
+myAccountRouter.get('/', checkAuthenticated, (req, res) => {
     const domain_model = domainModel.find({});
 
     Promise.all([domain_model]).then((results) => {

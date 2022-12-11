@@ -4,6 +4,10 @@ const Schema = new mongoose.Schema({
     type: {
         type: String
     },
+    code: {
+        type: String,
+        unique: true
+    },
     path: {
         type: String
     },

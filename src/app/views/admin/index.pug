@@ -1,0 +1,48 @@
+html(lang="en" data-theme="light")
+    head
+        include ../../partials/head.pug
+    header 
+        include ../../partials/header/userHeader.pug
+    body
+        include ../../partials/alerts/banner.pug
+
+
+        div.drawer.drawer-mobile
+            input.drawer-toggle(id="my-drawer-2" type="checkbox")
+            div.drawer-content
+
+                
+                include ./drawer/overview/overviewPage.pug
+
+
+
+            div.drawer-side
+                label.drawer-overlay(for="my-drawer-2")
+                ul.menu.p-4.w-80.bg-base-100.text-base-content
+
+                    li
+                        a 
+                            i.fa-solid.fa-home.fa-lg
+                            |Overview
+                    li
+                        a 
+                            i.fa-solid.fa-lock.fa-lg
+                            |Authentication
+                    li
+                        a 
+                            i.fa-solid.fa-users.fa-lg
+                            |Users
+                    li
+                        a 
+                            i.fa-solid.fa-globe.fa-lg
+                            |Domains
+                    li
+                        a
+                            i.fa-solid.fa-palette.fa-lg
+                            |Theme
+                    li
+                        a
+                            i.fa-solid.fa-code.fa-lg
+                            |API
+
+
