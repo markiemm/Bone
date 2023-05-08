@@ -1,48 +1,83 @@
 html(lang="en" data-theme="light")
     head
         include ../../partials/head.pug
-    header 
-        include ../../partials/header/userHeader.pug
     body
         include ../../partials/alerts/banner.pug
 
+        
+        include ../../partials/header/adminHeader.pug
 
-        div.drawer.drawer-mobile
-            input.drawer-toggle(id="my-drawer-2" type="checkbox")
-            div.drawer-content
+        div.p-10.flex.justify-center.gap-40
+            div
+                div.relative.overflow-x-auto
+                    table.w-full.text-sm.text-left.text-gray-500(class='dark:text-gray-400')
+                       
 
-                
-                include ./drawer/overview/overviewPage.pug
+                        tbody
+                            tr.bg-white.border-b(class='dark:bg-gray-800 dark:border-gray-700')
+                                th.px-6.py-4.font-bold.text-gray-900.whitespace-nowrap(scope='row' class='dark:text-white')
+                                    | Number of domains
+                                td.px-6.py-4
+                                    | 1
+
+                            tr.bg-white.border-b(class='dark:bg-gray-800 dark:border-gray-700')
+                                th.px-6.py-4.font-bold.text-gray-900.whitespace-nowrap(scope='row' class='dark:text-white')
+                                    | Number of users
+                                td.px-6.py-4
+                                    | 1
+
+                            tr.bg-white.border-b(class='dark:bg-gray-800 dark:border-gray-700')
+                                th.px-6.py-4.font-bold.text-gray-900.whitespace-nowrap(scope='row' class='dark:text-white')
+                                    | Number of files
+                                td.px-6.py-4
+                                    | 8
+
+                            tr.bg-white.border-b(class='dark:bg-gray-800 dark:border-gray-700')
+                                th.px-6.py-4.font-bold.text-gray-900.whitespace-nowrap(scope='row' class='dark:text-white')
+                                    | Total Storage
+                                td.px-6.py-4
+                                    | 1 GB
+
+                            tr.bg-white.border-b(class='dark:bg-gray-800 dark:border-gray-700')
+                                th.px-6.py-4.font-bold.text-gray-900.whitespace-nowrap(scope='row' class='dark:text-white')
+                                    | Version
+                                td.px-6.py-4
+                                    | 1.0.0
+                            
+
+            div
+                h1.text-3xl.font-bold.text-gray-900
+                    | Welcome, 
+                    span.text-blue-500
+                        | #{user.username}
+
+                hr.my-5
+
+                h1.text-3xl.font-bold.my-5.text-gray-400
+                    | News
+
+                div.my-5
+                    h2.mb-2.text-lg.font-semibold.text-gray-900(class='dark:text-white')
+                        |Version: 1.0.0
+                        span.bg-gray-200.text-gray-500.text-xs.ml-3.font-semibold.px-2.py-1.rounded-full(class='dark:bg-gray-700 dark:text-gray-400')
+                            | Latest
+                    ul.max-w-md.space-y-1.text-gray-500.list-disc.list-inside(class='dark:text-gray-400')
+                        li
+                            | Initial release
+                        li
+                            | Added support for multiple domains
+
+                //- div.my-5
+                //-     h2.mb-2.text-lg.font-semibold.text-gray-900(class='dark:text-white') Password requirements:
+                //-     ul.max-w-md.space-y-1.text-gray-500.list-disc.list-inside(class='dark:text-gray-400')
+                //-         li
+                //-             | At least 10 characters (and up to 100 characters)
+                //-         li
+                //-             | At least one lowercase character
+                //-         li
+                //-             | Inclusion of at least one special character, e.g., ! @ # ?
 
 
 
-            div.drawer-side
-                label.drawer-overlay(for="my-drawer-2")
-                ul.menu.p-4.w-80.bg-base-100.text-base-content
-
-                    li
-                        a 
-                            i.fa-solid.fa-home.fa-lg
-                            |Overview
-                    li
-                        a 
-                            i.fa-solid.fa-lock.fa-lg
-                            |Authentication
-                    li
-                        a 
-                            i.fa-solid.fa-users.fa-lg
-                            |Users
-                    li
-                        a 
-                            i.fa-solid.fa-globe.fa-lg
-                            |Domains
-                    li
-                        a
-                            i.fa-solid.fa-palette.fa-lg
-                            |Theme
-                    li
-                        a
-                            i.fa-solid.fa-code.fa-lg
-                            |API
-
-
+        //flowbite CDN
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js')

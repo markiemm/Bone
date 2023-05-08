@@ -1,0 +1,87 @@
+html(lang="en" data-theme="light")
+    head
+        include ../../../partials/head.pug
+    body
+        include ../../../partials/alerts/banner.pug
+
+        
+        include ../../../partials/header/adminHeader.pug
+
+        div.p-10
+            //back button
+            a(href='/admin' class='text-blue-500').font-bold.text-xl
+                i.fas.fa-arrow-left.mr-2
+                |  Back
+
+            div.mx-2.my-10(class="md:mx-32")
+                form(action='/api/v1/domains/add' method='POST')
+                    h1.text-3xl.font-bold.text-gray-900
+                        | Add domain
+                    div.mt-5.flex.justify-center.gap-3.flex-col(class='md:flex-row md:gap-20')
+                        div(class="w-full")
+                            #alert-border-4.flex.p-4.mb-4.text-yellow-800.border-t-4.border-yellow-300.bg-yellow-50(class='dark:text-yellow-300 dark:bg-gray-800 dark:border-yellow-800' role='alert')
+                                svg.flex-shrink-0.w-5.h-5(fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg')
+                                    path(fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clip-rule='evenodd')
+                                .ml-3.text-sm.font-medium
+                                    | Don't include the protocol (http:// or https://) or a trailing slash (/). Accepted formats:
+
+                            div
+                                label.text-gray-700.font-bold
+                                    | Domain
+                                input(type='text' name='domain' id="domain" placeholder='domain.com | example.domain.com' class='block w-full p-2 border rounded-lg text-gray-700 bg-white border-gray-300 focus:outline-none focus:border-gray-500')
+
+                            
+
+
+                            
+
+                        div.w-full(class="md:w-1/2").bg-gray-100.rounded-lg.p-5
+                            h1.text-3xl.font-bold.text-gray-900
+                                | Options
+                            div
+                                dl.max-w-md.mt-5.space-y-5
+                                    div
+                                        dt.text-gray-700.font-bold
+                                            | Active
+                                        dd.text-gray-500
+                                            | This user can sign in and upload files.
+                                        dd
+                                            label.relative.inline-flex.items-center.cursor-pointer
+                                                input.sr-only.peer(id="active" type='checkbox')
+                                                .w-11.h-6.bg-gray-200.rounded-full.peer(class="peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600")
+                                                input(type='hidden' id='active-hidden' name='active' value='')
+                                            
+                                    div
+                                        dt.text-gray-700.font-bold
+                                            | Admin
+                                            i.fas.fa-shield-alt.text-xl.ml-2
+                                        dd.text-gray-500
+                                            | This user can access the admin panel.
+                                        dd
+                                            label.relative.inline-flex.items-center.cursor-pointer
+                                                input.sr-only.peer(id="admin" type='checkbox')
+                                                .w-11.h-6.bg-gray-200.rounded-full.peer(class="peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600")
+                                                input(type='hidden' id='admin-hidden' name='admin' value='')
+                                    div
+                                        dt.text-gray-700.font-bold
+                                            | Quota
+                                        dd.text-gray-500
+                                            | Enforce a maximum storage quota for this user.
+                                        dd
+                                    
+                                        .relative.mb-6
+                                            .absolute.inset-y-0.right-0.flex.items-center.pr-3.pointer-events-none
+                                                | MB
+                                            input.bg-gray-50.border.border-gray-300.text-gray-900.text-sm.rounded-lg.block.w-full(type='number' class='focus:ring-blue-500 focus:border-blue-500 p-2.5' id="quota" name="quota" placeholder='1234' value='5000')
+                
+                    div.mt-5
+                        button.text-white.bg-blue-700.font-medium.rounded-full.text-sm.px-5.text-center.mr-2.mb-2(type='submit' class='hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800') Save                      
+
+
+            
+                     
+        //flowbite CDN
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js')
+
+
+        

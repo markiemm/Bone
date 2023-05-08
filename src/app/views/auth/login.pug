@@ -1,0 +1,37 @@
+doctype html
+html(lang="en" data-theme="light")
+    head
+        include ../../partials/head.pug
+    body.bg-base-200
+        include ../../partials/alerts/banner.pug
+
+            section.bg-gray-50(class='dark:bg-gray-900')
+                .flex.flex-col.items-center.justify-center.px-6.py-8.mx-auto(class='md:h-screen lg:py-0')
+                    a.flex.items-center.mb-6.text-2xl.font-semibold.text-gray-900(href='#' class='dark:text-white')
+                        img.w-20(src="/img/logo/logo.png" alt="Hero")
+                        h1.mb-5.text-5xl.font-bold.bg-clip-text.bg-gradient-to-r.from-blue-700.to-blue-500.text-transparent
+                            | Bone
+                    .w-full.bg-white.rounded-lg.shadow(class='dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700')
+                        .p-6.space-y-4(class='md:space-y-6 sm:p-8')
+                            h1.text-xl.font-bold.leading-tight.tracking-tight.text-gray-900(class='md:text-2xl dark:text-white')
+                                | Sign in to your account
+                            form.space-y-4(class='md:space-y-6' action="/login" method="POST")
+                                div
+                                    label.block.mb-2.text-sm.font-medium.text-gray-900(for='email' class='dark:text-white') Your username
+                                    input.bg-gray-50.border.border-gray-300.text-gray-900.rounded-lg.block.w-full(type='text' name='username' id="username" class='sm:text-sm focus:ring-blue-600 focus:border-blue-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='Username' required)
+                                div
+                                    label.block.mb-2.text-sm.font-medium.text-gray-900(for='password' class='dark:text-white') Password
+                                    input.bg-gray-50.border.border-gray-300.text-gray-900.rounded-lg.block.w-full(type='password' name='password' id="password" placeholder='••••••••' class='sm:text-sm focus:ring-blue-600 focus:border-blue-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' required)
+                                .flex.items-center.justify-between
+                                    a.text-sm.font-medium.text-blue-600(href='#' class='hover:underline dark:text-blue-500') Forgot password?
+                                button.w-full.text-white.bg-blue-600.font-medium.rounded-lg.text-sm.px-5.text-center(type='submit' class='hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800') Sign in
+                                p.text-sm.font-light.text-gray-500(class='dark:text-gray-400')
+                                    | Don’t have an account yet? 
+                                    a.font-medium.text-blue-600(href='#' class='hover:underline dark:text-blue-500') Sign up
+
+
+                        
+
+
+                    span.ml-2.mt-5.text-sm.text-gray-600
+                        | A node.js ShareX server

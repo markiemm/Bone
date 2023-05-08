@@ -1,12 +1,14 @@
 const express = require('express');
 const LoginRoute = express.Router();
 const passport = require('passport');
-const { checkNotAuthenticated } = require('../../middlewares/auth');
+
+LoginRoute.get('/',
+(req, res) => {
+    res.render('auth/login', { user: req.user });
+});
 
 
 LoginRoute.post('/',
-checkNotAuthenticated,
-
 passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/',

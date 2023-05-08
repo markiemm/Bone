@@ -1,63 +1,44 @@
 const express = require('express');
 const usersRouter = express.Router();
-const { checkAuthenticated, checkNotAuthenticated } = require('../../../middlewares/auth');
-const domainModal = require('../../../models/domains');
-const userModal = require('../../../models/users');
-const bcrypt = require('bcrypt');
-const randomstring = require('randomstring');
+const userModel = require('../../../models/users');
 
-usersRouter.get('/',
-checkAuthenticated,
-(req, res) => {
-    userModal.find({}, (err, accounts) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('admin/users/index', { accounts: accounts, user: req.user });
-        }
+usersRouter.get('/', (req, res) => {
+    try {
+        userModel.find({}, (err, users) => {
+            if (err) {
+                console.log(err);
+                res.render('status/500', {
+                    title: '500 Internal Server Error',
+                    header: '500 Internal Server Error',
+                    message: 'An error occurred while trying to fetch users from the database.',
+                    user: req.user
+                });
+            } else {
+                res.render('admin/users', {
+                    title: 'Users',
+                    user: req.user,
+                    users: users
+                });
+            }
+        });
+    } catch (err) {
+        console.log(err);
+        res.render('status/500', {
+            title: '500 Internal Server Error',
+            header: '500 Internal Server Error',
+            message: 'An error occurred while trying to fetch users from the database.',
+            user: req.user
+        });
+    }
+});
+
+usersRouter.get('/add', (req, res) => {
+    res.render('admin/addPages/addUser', {
+        title: 'Add User',
+        user: req.user
     });
 });
 
-usersRouter.post('/add',
-checkAuthenticated,
-(req, res) => {
-    const { username, email, password, admin } = req.body;
 
-    const hashedPassword = bcrypt.hashSync(password, 10);
-    const GeneratedApiKey = randomstring.generate(32);
-
-
-    const newUser = new userModal({
-        username: username,
-        email: email,
-        password: hashedPassword,
-        admin: admin,
-        api_key: GeneratedApiKey
-        
-    });
-
-    newUser.save((err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect('/dashboard/users');
-        }
-    });
-});
-
-usersRouter.delete('/delete/:postid',
-checkAuthenticated,
-(req, res) => {
-    const { postid } = req.params;
-
-    domainModal.findByIdAndDelete(postid, (err, domain) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send('Server error');
-        } else {
-            res.status(200).send('Domain deleted successfully');
-        }
-    });
-});
 
 module.exports = usersRouter;

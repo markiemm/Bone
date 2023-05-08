@@ -1,3 +1,4 @@
+
 module.exports = {
     checkNotAuthenticated: (req, res, next) => {
         if (req.isAuthenticated()) {
@@ -14,7 +15,7 @@ module.exports = {
     },
 
     checkAdmin: (req, res, next) => {
-        if (req.isAuthenticated() && req.user.admin) {
+        if (req.isAuthenticated() && req.user.admin && req.hostname === process.env.ADMIN_DOMAIN) {
             return next();
         }
         res.redirect('/');

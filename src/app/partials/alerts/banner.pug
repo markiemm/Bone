@@ -1,33 +1,127 @@
 if (typeof errors!='undefined')
     errors.forEach(function(error))
-        div.alert.alert-error.shadow-lg.rounded-none.px-5
-            div
-                i.fa-regular.fa-circle-xmark.fa-2x
-                span #{error}
+        //- div.alert.alert-error.shadow-lg.rounded-none.px-5
+        //-     div
+        //-         i.fa-regular.fa-circle-xmark.fa-2x
+        //-         span #{error}
 
+        .fixed.flex.items-center.w-full.max-w-xs.p-4.space-x-4.text-white.bg-red-500.rounded-lg.shadow.bottom-5.right-5.space-x(role='alert' id="toast")
+            .flex-shrink-0
+                i.fas.fa-check-circle.text-2xl
+            .flex-1
+                .text-lg.font-bold
+                    | Oops!
+                .text-sm.my-3
+                    | #{error}
+                .w-full.rounded-full.mb-4(class='h-2.5')
+                    .bg-red-300.rounded-full(class='h-2.5' style='width: 25%' id='progress-bar')
+        script.
+            const toast = document.getElementById('toast');
+            const progressBar = document.getElementById('progress-bar');
+
+            progressBar.style.width = '100%';
+            for (let i = 100; i >= 0; i--) {
+                setTimeout(() => {
+                    progressBar.style.width = i + '%';
+                }, 50 * (100 - i));
+
+                if (i === 0) {
+                    setTimeout(() => {
+                        $(toast).fadeOut(500);
+                    }, 50 * (100 - i));
+                }
+            }
 end
 
 
 if (success!='')
-    div.alert.alert-success.shadow-lg.rounded-none.px-5
-        div
-            i.fas.fa-check-circle.fa-2x
-            span #{success}
+    .fixed.flex.items-center.w-full.max-w-xs.p-4.space-x-4.text-white.bg-green-500.rounded-lg.shadow.bottom-5.right-5.space-x(role='alert' id="toast")
+        .flex-shrink-0
+            i.fas.fa-check-circle.text-2xl
+        .flex-1
+            .text-lg.font-bold
+                | Success
+            .text-sm.my-3
+                | #{success}
+            .w-full.rounded-full.mb-4(class='h-2.5')
+                .bg-green-300.rounded-full(class='h-2.5' style='width: 25%' id='progress-bar')
+
+    script.
+        const toast = document.getElementById('toast');
+        const progressBar = document.getElementById('progress-bar');
+
+        progressBar.style.width = '100%';
+        for (let i = 100; i >= 0; i--) {
+            setTimeout(() => {
+                progressBar.style.width = i + '%';
+            }, 50 * (100 - i));
+
+            if (i === 0) {
+                setTimeout(() => {
+                    $(toast).fadeOut(500);
+                }, 50 * (100 - i));
+            }
+        }
 end
 
 
 if (warning!='')
-    div.alert.alert-warning.shadow-lg.rounded-none.px-5
-        div
-            i.fas.fa-exclamation-circle.fa-2x
-            span #{warning}
+    
+    .fixed.flex.items-center.w-full.max-w-xs.p-4.space-x-4.text-white.bg-yellow-500.rounded-lg.shadow.bottom-5.right-5.space-x(role='alert' id="toast")
+        .flex-shrink-0
+            i.fas.fa-check-circle.text-2xl
+        .flex-1
+            .text-lg.font-bold
+                | Something is not right
+            .text-sm.my-3
+                | #{warning}
+            .w-full.rounded-full.mb-4(class='h-2.5')
+                .bg-yellow-300.rounded-full(class='h-2.5' style='width: 25%' id='progress-bar')
+    script.
+        const toast = document.getElementById('toast');
+        const progressBar = document.getElementById('progress-bar');
+
+        progressBar.style.width = '100%';
+        for (let i = 100; i >= 0; i--) {
+            setTimeout(() => {
+                progressBar.style.width = i + '%';
+            }, 50 * (100 - i));
+
+            if (i === 0) {
+                setTimeout(() => {
+                    $(toast).fadeOut(500);
+                }, 50 * (100 - i));
+            }
+        }
 end
 
 
 if (error!='')
 
-    div.alert.alert-error.shadow-lg.rounded-none.px-5
-        div
-            i.fa-regular.fa-circle-xmark.fa-2x
-            span #{error}
+    .fixed.flex.items-center.w-full.max-w-xs.p-4.space-x-4.text-white.bg-red-500.rounded-lg.shadow.bottom-5.right-5.space-x(role='alert' id="toast")
+        .flex-shrink-0
+            i.fas.fa-check-circle.text-2xl
+        .flex-1
+            .text-lg.font-bold
+                | Oops!
+            .text-sm.my-3
+                | #{error}
+            .w-full.rounded-full.mb-4(class='h-2.5')
+                .bg-red-300.rounded-full(class='h-2.5' style='width: 25%' id='progress-bar')
+    script.
+        const toast = document.getElementById('toast');
+        const progressBar = document.getElementById('progress-bar');
+
+        progressBar.style.width = '100%';
+        for (let i = 100; i >= 0; i--) {
+            setTimeout(() => {
+                progressBar.style.width = i + '%';
+            }, 50 * (100 - i));
+
+            if (i === 0) {
+                setTimeout(() => {
+                    $(toast).fadeOut(500);
+                }, 50 * (100 - i));
+            }
+        }
 end
