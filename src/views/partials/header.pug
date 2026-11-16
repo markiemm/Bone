@@ -1,0 +1,34 @@
+div(class='navbar w-full bg-base-100')
+	//- div(class='flex-none lg:hidden')
+	//- 	a.btn.btn-square.btn-ghost(aria-label='open sidebar', href='#')
+	//- 		i.menu-icon.fas.fa-bars.text-xl
+	div.navbar-start
+		a(class='btn btn-ghost text-2xl' aria-label='home' href='/') Bone
+
+	div(class='navbar-end')
+
+		if user
+
+
+			div(class='dropdown dropdown-end' id='notification-dropdown')
+				div(tabindex='0', role='button', class='btn btn-ghost btn-circle m-1')
+					div(class='indicator')
+						i(class='fas fa-bell text-xl')
+							span(class='badge badge-xs badge-primary indicator-item' id='notification-count') 0
+				div(tabindex='0', class='dropdown-content card card-md bg-base-200 z-60 w-80 shadow-md card-border border-base-300' id='notification-dropdown-content')
+					div(class='border-base-300 border-b border-dashed')
+						div(class='flex items-center gap-2 p-4')
+							div(class='grow')
+								div(class='flex items-center gap-2 text-sm font-medium')
+									i.fas.fa-bell
+									| Notifications
+							div(class='btn btn-ghost text-success')
+								i.fas.fa-check-double
+								button(class='text-sm' id='mark-all-read') Mark all as read
+					div.flex.flex-col(id='notification-list')
+						
+					div(class='border-base-300 border-t border-dashed p-3 flex justify-center')
+						a(class='hover:link' href='/notifications') View All Notifications
+
+		else
+			a(class='btn btn-ghost' href='/login') Log In

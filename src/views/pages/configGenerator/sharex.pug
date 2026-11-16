@@ -1,0 +1,84 @@
+extends ../../layouts/main
+
+block content
+    div.flex.flex-col.justify-center.items-center.gap-6.mt-6
+        h2(class='text-3xl font-semibold') ShareX Config Generator
+        div.p-3.rounded-xl.w-full.max-w-4xl.border.border-base-300
+            div.flex.flex-row.w-full.gap-6
+                div.w-full
+                    div.flex.flex-col.gap-4
+                        div
+                            label(for='configName' class='font-semibold mb-1') Config Name
+                            input(type='text' id='configName' name='configName' required placeholder='Enter your Config Name' class='input input-bordered w-full')
+                        div
+                            label(for='apiKey' class='font-semibold mb-1') Your API Key
+                            input(type='text' id='apiKey' name='apiKey' required placeholder='Enter your API Key' class='input input-bordered w-full')
+                            label(class='text-sm text-base-content/70 mt-1') Create an API key&nbsp;
+                                a(href='/settings/api' class='link link-primary') here
+                        div.flex.flex-col
+                            span(class='font-semibold mb-2') Destination Options
+                            label(for='destinationOptions' class='mb-1')
+                                input(type='checkbox', checked='checked', class='checkbox checkbox-xl' id='destinationOptionsImages' name='destinationOptionsImages')
+                                | Upload images
+
+                            label(for='destinationOptions' class='mb-1')
+                                input(type='checkbox', checked='checked', class='checkbox checkbox-xl' id='destinationOptionsTextFiles' name='destinationOptionsTextFiles')
+                                | Upload Text Files
+
+                            label(for='destinationOptions' class='mb-1')
+                                input(type='checkbox', checked='checked', class='checkbox checkbox-xl' id='destinationOptionsOtherFiles' name='destinationOptionsOtherFiles')
+                                | Upload Other Files
+                    button(class='btn btn-primary mt-4' id='generateConfigFile') Generate Config File
+                div(class="w-1/4").text-center
+                    h3(class='text-lg font-semibold mb-2') Config version: 17.0.0
+
+    script.
+        document.getElementById('generateConfigFile').addEventListener('click', function() {
+            const configName = document.getElementById('configName').value || 'MyBoneConfig';
+            const apiKey = document.getElementById('apiKey').value;
+
+            const uploadImages = document.getElementById('destinationOptionsImages').checked;
+            const uploadTextFiles = document.getElementById('destinationOptionsTextFiles').checked;
+            const uploadOtherFiles = document.getElementById('destinationOptionsOtherFiles').checked;
+
+            if (!apiKey) {
+                alert('Please enter your API Key.');
+                return;
+            }
+
+            const destinationTypes = [];
+            if (uploadImages) {
+                destinationTypes.push("ImageUploader");
+            }
+            if (uploadTextFiles) {
+                destinationTypes.push("TextUploader");
+            }
+            if (uploadOtherFiles) {
+                destinationTypes.push("FileUploader");
+            }
+
+            const config = {
+                Version: "17.0.0",
+                Name: configName,
+                DestinationType: destinationTypes.join(", "),
+                RequestMethod: "POST",
+                RequestURL: window.location.origin + "/upload",
+                Headers: {
+                    "X-API-KEY": apiKey
+                },
+                Body: "MultipartFormData",
+                FileFormName: "file",
+                URL: "{json:url}",
+                ThumbnailURL: "{json:thumbnail_url}",
+                DeletionURL: "{json:deletion_url}",
+                ErrorMessage: "{json:error}"
+            };
+
+            const configBlob = new Blob([JSON.stringify(config, null, 4)], { type: 'application/json' });
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(configBlob);
+            downloadLink.download = configName + '.sxcu';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });

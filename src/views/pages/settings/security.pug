@@ -1,0 +1,37 @@
+extends ../../layouts/settings
+
+block content
+    h2(class='text-2xl font-bold mb-4') Security Settings
+
+    div.flex.flex-col.gap-3
+        h3(class='text-xl font-semibold') Change Password
+        p(class='text-base-content') Update your account password regularly to enhance security.
+        form(action='/settings/security?method=changePassword' method='POST')
+            fieldset(class='fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4')
+                input(type='hidden' name='method' value='changePassword' id='method' required)
+                label(class='label') Current Password
+                input(type='password', class='input', placeholder='Enter current password' id='currentPassword' name='currentPassword' required)
+                label(class='label') New Password
+                input(type='password', class='input', placeholder='Enter new password' id='newPassword' name='newPassword' required)
+                label(class='label') Confirm New Password
+                input(
+                    type='password',
+                    class='input validator',
+                    placeholder='Confirm new password'
+                    id='confirmNewPassword'
+                    name='confirmNewPassword'
+                    minlength="8"
+                    pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                    title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+                    required
+                )
+                p.validator-hint
+                    | Password must be at least 8 characters long.
+                    <br>
+                    | At least one number
+                    <br>
+                    | At least one lowercase letter
+                    <br>
+                    | At least one uppercase letter
+                button(type='submit' class='btn btn-primary') Update Password
+    div.divider

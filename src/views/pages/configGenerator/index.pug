@@ -1,0 +1,16 @@
+extends ../../layouts/main
+
+block content
+    h2(class='text-2xl font-bold mb-4') Config Generator
+
+    div.flex.flex-col.justify-center.items-center.h-64.gap-6
+        h2(class='text-3xl font-semibold') Select a client to get started
+        div.flex.flex-row.gap-4.w-full.max-w-4xl
+            a(href='/dashboard/config-generator/sharex' class='w-full bg-base-200 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow duration-300 border border-base-300 hover:border-primary')
+                img(src='/images/brands/ShareX_Logo.png' alt='Upload Icon' class='mx-auto mb-4 w-16 h-16')
+                h3(class='text-lg font-semibold mb-2') Share X config
+                p(class='text-base-content') Generate a ShareX configuration file tailored to your needs.
+            div.bg-base-200.p-6.rounded-lg.shadow-lg.text-center.w-full.opacity-50
+                i.fas.fa-tools.fa-3x.mb-4
+                h3(class='text-lg font-semibold mb-2') More Clients Ahead
+                p(class='text-base-content') We're working hard to bring you more client configurations soon!

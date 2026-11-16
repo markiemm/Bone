@@ -1,0 +1,57 @@
+dialog(id='upload_modal', class='modal bg-base-100')
+	//- div(class='modal-box w-11/12 max-w-5xl')
+	div(class='card bg-base-200 card-border border-base-300 card-sm overflow-hidden modal-box w-11/12 max-w-5xl')
+		div(class='border-base-300 border-b border-dashed')
+			div(class='flex items-center gap-2 p-4')
+				div(class='grow')
+					div(class='flex items-center gap-2 text-sm font-medium')
+						i.fas.fa-cloud-upload-alt.fa-lg.opacity-40
+						| Upload media
+		div(class='card-body gap-4')
+			form(action="/upload" method="post" enctype="multipart/form-data" class="dropzone border-2 border-dashed border-blue-400 p-6 rounded-xl flex flex-col items-center justify-center gap-4" id="dropzone-upload-form")
+				//- optionally add fallback input if JS disabled
+				noscript
+					input(type="file" name="file" multiple)
+			div(class='card-actions grid grid-cols-2')
+				button(onclick='upload_modal.close()', class='btn btn-neutral' ) Close
+				button(class='btn btn-disabled' id="upload_button") Upload
+
+	script(src="/node-modules/@deltablot/dropzone/dist/dropzone-min.js")
+	script.
+		Dropzone.autoDiscover = false;
+		const uploadDropzone = new Dropzone("#dropzone-upload-form", {
+			paramName: "file", 
+			//10GB max file size
+			maxFilesize: 10240,
+			uploadMultiple: true,
+			parallelUploads: 5,
+			autoProcessQueue: false,
+			addRemoveLinks: true,
+			dictRemoveFile: "Remove",
+			init: function() {
+				const uploadButton = document.getElementById("upload_button");
+				uploadButton.addEventListener("click", () => {
+					this.processQueue();
+				});
+				this.on("complete", function(file) {
+					console.log("File upload complete:", file);
+					if (this.getQueuedFiles().length === 0 && this.getUploadingFiles().length === 0) {
+						uploadButton.classList.remove("btn-primary");
+						uploadButton.classList.add("btn-disabled");
+						this.removeAllFiles();
+						upload_modal.close();
+					}
+				});
+				this.on("error", function(file, errorMessage) {
+					console.error("Error uploading file:", file, errorMessage);
+				});
+				this.on("addedfile", function(file) {
+					console.log("File added:", file);
+					uploadButton.classList.remove("btn-disabled");
+					uploadButton.classList.add("btn-primary");
+				});
+			}
+		});
+
+
+	

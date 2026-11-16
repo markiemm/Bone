@@ -1,0 +1,60 @@
+doctype html
+html(lang="en")
+
+    head
+        title= title
+        include ../partials/head
+
+    header
+        include ../partials/header
+
+    body
+    
+        include ../partials/alerts
+        div(class='drawer lg:drawer-open')
+            input#my-drawer-3(type='checkbox', class='drawer-toggle')
+            div(class='drawer-content flex flex-col min-h-screen p-6')
+                // Page content here
+                block content
+
+            div(class='drawer-side')
+                label(for='my-drawer-3', aria-label='close sidebar', class='drawer-overlay')
+
+                div(class='h-96 overflow-x-auto bg-base-200 min-h-full w-80')
+                    table(class='table table-pin-rows bg-base-200')
+                        thead
+                            tr
+                                th Personal
+                        tbody
+                            tr
+                                td(class=page=='profile' ? 'bg-base-300' : '')
+                                    a(href="/settings/profile" class="") Profile
+                            tr
+                                td(class=page=='security' ? 'bg-base-300' : '')
+                                    a(href="/settings/security" class="") Security
+                            tr
+                                td Notifications
+                        thead
+                            tr
+                                th Intergration
+                        tbody
+                            tr
+                                td(class=page=='api' ? 'bg-base-300' : '')
+                                    a(href="/settings/api" class="") API
+                            tr
+                                td
+                                    a(href="https://api.example.com/docs" class="")
+                                        span API Documentation
+                                        i.fas.fa-external-link-alt.text-xs.ml-1
+                            tr
+                                td Webhooks
+                        thead
+                            tr
+                                th Appearance
+                        tbody
+                            tr
+                                td Themes
+        
+
+    footer
+        include ../partials/footer

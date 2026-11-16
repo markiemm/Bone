@@ -1,0 +1,96 @@
+extends ../../layouts/main
+
+block content
+    .bg-base-200.p-4.rounded-xl.flex.flex-col.gap-4
+        div.flex.flex-row.justify-between
+            div.w-full
+                label(class='input w-full')
+                    i(class='fas fa-search mr-2')
+                    input(type='search', class='w-full', placeholder='Search' id='searchInput')
+                    kbd(class='kbd kbd-sm') ⌘
+                    kbd(class='kbd kbd-sm') K
+            
+            div(class="w-48 ml-4")
+                select(class='select' id='clientFilter')
+                    option(disabled, selected) Client
+                    option ShareX
+                    option Linux Script
+
+            div(class="w-48 ml-4")
+                select(class='select' id='sortByFilter')
+                    option(disabled, selected) Sort by
+                    option(value='name') Name
+                    option(value='size') Size
+                    option(value='modifiedDate') Modified Date
+                    option(value='createdDate') Created Date
+                    option(value='fileType') File Type
+            div(class="w-48 ml-4")
+                select(class='select' id='sortOrderFilter')
+                    option(disabled, selected) Sort Order
+                    option(value='asc') Sort by ascending
+                    option(value='desc') Sort by descending
+
+
+            //calendar
+            div(class="w-48 ml-4")
+                button#cally1(popovertarget='cally-popover1', class='input input-border', style='anchor-name:--cally1')
+                    | Pick a date
+                #cally-popover1(popover, class='dropdown bg-base-100 rounded-box shadow-lg dropdown-end', style='position-anchor:--cally1')
+                    calendar-date(class='cally', onchange="{document.getElementById('cally1').innerText = this.value;}", locale='en-GB', month-format='long', year-format='numeric')
+                        svg(aria-label='Previous', class='fill-current size-4', slot='previous', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                            path(d='M15.75 19.5 8.25 12l7.5-7.5')
+                        svg(aria-label='Next', class='fill-current size-4', slot='next', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
+                            path(d='m8.25 4.5 7.5 7.5-7.5 7.5')
+                        calendar-month
+    
+    div.flex.flex-row.flex-wrap.gap-2.mt-3(id='activeFilters')
+        //- div(class='badge badge-lg')
+        //-     span(class='mr-2') Client: ShareX
+        //-     button.btn.btn-sm.btn-circle.btn-ghost(onclick='this.parentElement.remove()')
+        //-         i(class='fas fa-times')
+        //- div(class='badge badge-lg ml-2')
+        //-     span(class='mr-2') Sorted by: Newest
+        //-     button.btn.btn-sm.btn-circle.btn-ghost(onclick='this.parentElement.remove()')
+        //-         i(class='fas fa-times')
+        //- div(class='badge badge-lg ml-2')
+        //-     span(class='mr-2') Date: 2024-06-15
+        //-     button.btn.btn-sm.btn-circle.btn-ghost(onclick='this.parentElement.remove()')
+        //-         i(class='fas fa-times')
+
+
+    div(class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4' id='media-container')
+
+        //skeleton loaders
+        each val in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+            div(class='flex w-52 flex-col gap-4')
+                div(class='skeleton h-32 w-full')
+                div(class='skeleton h-4 w-28')
+                div(class='skeleton h-4 w-full')
+                div(class='skeleton h-4 w-full')
+
+
+
+        //- // Example media item up to 70 items
+        //- each val in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        //-     div(class='card bg-base-100 hover:shadow-lg transition-shadow duration-200')
+        //-         figure
+        //-             img(src=`https://picsum.photos/seed/${val}/400/300` alt='Media Thumbnail' class='rounded-t-lg')
+        //-         div(class='card-body p-4')
+        //-             h2(class='card-title text-sm truncate') Example_Media_File_Name_${val}.jpg
+        //-             p(class='text-xs text-gray-500') Uploaded on: 2024-06-15
+        //-             //- div(class='card-actions justify-end mt-2')
+        //-             //-     button.btn.btn-sm.btn-primary(onclick=`window.location.href='/media/${val}'`) View Details
+        //-             //-     button.btn.btn-sm.btn-secondary(onclick=`window.location.href='/download/media/${val}'`) Download
+
+    //page navigation
+    div(class='flex justify-center mt-6')
+        div(class='join')
+            button(class='join-item btn btn-disabled' id='prevPageBtn')
+                i(class='fas fa-angle-left')
+            button(class='join-item btn' id='pageTitle') Page 1
+            button(class='join-item btn' id='nextPageBtn')
+                i(class='fas fa-angle-right')
+
+    script(src='https://unpkg.com/video.js/dist/video.min.js')
+    script(src='https://unpkg.com/wavesurfer.js@7')
+    script(src='/javascript/getMedia.js')

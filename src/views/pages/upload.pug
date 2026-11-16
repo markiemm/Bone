@@ -1,0 +1,49 @@
+extends ../layouts/default
+
+block content
+	div(class='hero bg-base-100 min-h-screen')
+		div(class='hero-content text-center')
+			div(class='card w-full card-xl bg-base-200 border-base-300 shadow-xl border-2')
+				div(class='card-body')
+					h2(class='card-title') Upload your files
+					p(class='mb-4') Select files from your computer to upload to the server. You can upload multiple files at once.
+
+					div(class="dropzone mt-8" id="dropzone-upload-container")
+
+			//- div(id='dropzone-upload-container' class='mt-8')
+			//- 	form(action="/upload" method="post" enctype="multipart/form-data" class="dropzone bg-base-200 w-full" id="dropzone-upload-form")
+			//- 		//- optionally add fallback input if JS disabled
+			//- 		noscript
+			//- 			input(type="file" name="file" multiple)
+			//- 		div(class='text-center text-sm text-base-content/70')
+			//- 			p Drag and drop files here to upload
+			//- 			p Or click to select files
+	link(rel="stylesheet" href="/node-modules/@deltablot/dropzone/dist/dropzone.css")
+	script(src="/node-modules/@deltablot/dropzone/dist/dropzone-min.js")
+	script.
+		Dropzone.autoDiscover = false;
+		const uploadDropzone = new Dropzone("#dropzone-upload-container", {
+			url: "/upload",
+			paramName: "file", 
+			//10GB max file size
+			maxFilesize: 10240,
+			uploadMultiple: true,
+			parallelUploads: 5,
+			autoProcessQueue: true,
+			addRemoveLinks: true,
+			dictRemoveFile: "Remove",
+			init: function() {
+				this.on("complete", function(file) {
+					//- console.log("File upload complete:", file);
+					if (this.getQueuedFiles().length === 0 && this.getUploadingFiles().length === 0) {
+						window.location.href = "/dashboard";
+					}
+				});
+				this.on("error", function(file, errorMessage) {
+					console.error("Error uploading file:", file, errorMessage);
+				});
+				this.on("addedfile", function(file) {
+					console.log("File added:", file);
+				});
+			}
+		});

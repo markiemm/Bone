@@ -1,0 +1,26 @@
+extends ../../layouts/default
+
+block content
+    div(class='hero bg-base-100 min-h-screen')
+        div(class='hero-content flex-col lg:flex-row-reverse')
+            div(class='card bg-base-200 card-border border-base-300 card-xl overflow-hidden')
+                div(class='border-base-300 border-b border-dashed')
+                    div(class='flex items-center gap-2 p-4')
+                        div(class='grow')
+                            div(class='flex items-center gap-2 text-sm font-medium')
+                                i.fas.fa-sign-in-alt
+                                | Login
+                div(class='card-body gap-4')
+                    form(action='/login', method='POST', class='flex flex-col gap-4')
+                        p(class='text-xl opacity-60') Login to your account
+                        div(class='flex flex-col gap-1')
+                            label(class='input input-border flex max-w-none items-center gap-2')
+                                i.fas.fa-user.opacity-70
+                                input(type='text', class='grow', placeholder='Username' name='username' value=username)
+                        div(class='flex flex-col gap-1')
+                            label(class='input input-border flex max-w-none items-center gap-2')
+                                i.fas.fa-lock.opacity-70
+                                input(type='password', class='grow', placeholder='password' name='password')
+                        div(class='card-actions items-center gap-6')
+                            button(class='btn btn-primary btn-block') Login
+

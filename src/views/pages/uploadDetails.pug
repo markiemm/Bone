@@ -1,0 +1,59 @@
+extends ../layouts/default
+
+block content
+    div(class='hero bg-base-100 min-h-screen')
+        div(class='hero-content text-center')
+            div.w-full.flex.flex-col.justify-center.items-center.gap-4(class="md:flex-row")
+                div(class='w-full')
+                    img(src=`/storage/${upload.owner.username}/uploads/${upload.storedFilename}` alt='Thumbnail' class='mx-auto mb-4 rounded-lg shadow-md')
+                
+                div(class='card w-full md:w-1/2 bg-base-200 h-full')
+                    div(class='card-body gap-4')
+                        h2(class='flex items-center justify-between')
+                            span(class='flex items-center gap-2 font-semibold')
+                                i.fas.fa-chart-bar.fa-lg.opacity-40
+                                | Stats overview
+                        div(class='flex flex-col justify-between gap-2 h-full')
+                            div.text-xs
+                                div(class='border-t-base-content/5 flex items-center justify-between gap-2 border-t border-dashed py-2') Filename
+                                    span= upload.filename
+                                div(class='border-t-base-content/5 flex items-center justify-between gap-2 border-t border-dashed py-2') Size
+                                    span= upload.metadata.formattedSize
+                                div(class='border-t-base-content/5 flex items-center justify-between gap-2 border-t border-dashed py-2') Uploaded by
+                                    span= upload.owner.username
+                                div(class='border-t-base-content/5 flex items-center justify-between gap-2 border-t border-dashed py-2') Uploaded at
+                                    span= moment(upload.createdAt).format('MMMM Do YYYY, h:mm A')
+                        
+                            div()
+                                h2(class='font-semibold mb-2') MD5 Checksum
+                                p(class='text-xs break-all')= upload.metadata.md5
+
+                            div(class='flex flex-row justify-between w-full')
+                                button.btn.btn-neutral.btn-circle.btn-md(onclick=`window.location.href='/download/${upload._id}'`)
+                                    i.fas.fa-download
+                                button.btn.btn-neutral.btn-circle.btn-md(onclick=`window.location.href='/upload/${upload._id}/edit'`)
+                                    i.fas.fa-edit
+                                a.btn.btn-primary.btn-circle.btn-md(href=`/storage/${upload.owner.username}/uploads/${upload.storedFilename}` target='_blank' rel='noopener noreferrer')
+                                    i.fas.fa-eye                                
+                                button.btn.btn-error.btn-circle.btn-md(onclick=`window.location.href='/upload/${upload._id}/delete'`)
+                                    i.fas.fa-trash
+
+                        
+                
+                
+                
+                
+                
+                
+                
+                //- div(class='w-1/4 text-left pl-8')
+                //-     //- h1(class='text-4xl font-bold mb-4') Upload Details
+                //-     p(class='mb-2')
+                //-         strong Filename: #{upload.filename}
+                //-     p(class='mb-2')
+                //-         strong Size: #{(upload.size / 1024).toFixed(2)} KB
+                //-     p(class='mb-2')
+                //-         strong Uploaded by: #{upload.owner.username}
+                //-     p(class='mb-2')
+                //-         strong Uploaded at: #{new Date(upload.createdAt).toLocaleString()}
+                    p(class='mb-4')

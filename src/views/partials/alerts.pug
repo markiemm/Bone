@@ -1,0 +1,156 @@
+if (typeof errors!='undefined')
+    each error in errors
+        div(class='toast toast-top toast-center toast-msg' role='alert')
+            div(class='alert alert-error items-center p-4 flex')
+                .flex-shrink-0
+                    i.fas.fa-times-circle.text-2xl
+                .flex-1
+                    .text-lg.font-bold
+                        | Oops!
+                    .text-sm.my-3
+                        | #{error.msg}
+                    .w-full.rounded-full.mb-4(class='h-2.5')
+                        .bg-red-300.rounded-full.progress-bar(class='h-2.5' style='width: 100%')
+
+        //- .fixed.flex.items-center.w-full.max-w-xs.p-4.space-x-4.text-white.bg-red-500.rounded-lg.shadow.bottom-5.right-5.space-x.toast-msg(role='alert')
+        //-     .flex-shrink-0
+        //-         i.fas.fa-times-circle.text-2xl
+        //-     .flex-1
+        //-         .text-lg.font-bold
+        //-             | Oops!
+        //-         .text-sm.my-3
+        //-             | #{error}
+        //-         .w-full.rounded-full.mb-4(class='h-2.5')
+        //-             .bg-red-300.rounded-full.progress-bar(class='h-2.5' style='width: 100%')
+        //- script.
+        //-     (function() {
+        //-         const toasts = document.querySelectorAll('.toast-msg');
+        //-         const toast = toasts[toasts.length - 1];
+        //-         const progressBar = toast.querySelector('.progress-bar');
+
+        //-         progressBar.style.width = '100%';
+        //-         for (let i = 100; i >= 0; i--) {
+        //-             setTimeout(() => {
+        //-                 progressBar.style.width = i + '%';
+        //-             }, 50 * (100 - i));
+
+        //-             if (i === 0) {
+        //-                 setTimeout(() => {
+        //-                     toast.style.display = 'none';
+        //-                 }, 50 * (100 - i));
+        //-             }
+        //-         }
+        //-     })();
+
+
+if (success!='')
+    div(class='toast toast-top toast-center toast-msg' role='alert')
+        div(class='alert alert-success items-center p-4 flex')
+            .flex-shrink-0
+                i.fas.fa-check-circle.text-2xl
+            .flex-1
+                .text-lg.font-bold
+                    | Success!
+                .text-sm.my-3
+                    | #{success}
+                .w-full.rounded-full.mb-4(class='h-2.5')
+                    .bg-green-300.rounded-full.progress-bar(class='h-2.5' style='width: 100%')
+    script.
+        (function() {
+            const toasts = document.querySelectorAll('.toast-msg');
+            const toast = toasts[toasts.length - 1];
+            const progressBar = toast.querySelector('.progress-bar');
+
+            progressBar.style.width = '100%';
+            for (let i = 100; i >= 0; i--) {
+                setTimeout(() => {
+                    progressBar.style.width = i + '%';
+                }, 50 * (100 - i));
+
+                if (i === 0) {
+                    setTimeout(() => {
+                        toast.style.display = 'none';
+                    }, 50 * (100 - i));
+                }
+            }
+        })();
+
+
+if (warning!='')
+    
+    div(class='toast toast-top toast-center toast-msg' role='alert')
+        div(class='alert alert-warning items-center p-4 flex')
+            .flex-shrink-0
+                i.fas.fa-exclamation-triangle.text-2xl
+            .flex-1
+                .text-lg.font-bold
+                    | Oops!
+                .text-sm.my-3
+                    | #{warning}
+                .w-full.rounded-full.mb-4(class='h-2.5')
+                    .bg-yellow-300.rounded-full.progress-bar(class='h-2.5' style='width: 100%')
+    script.
+        (function() {
+            const toasts = document.querySelectorAll('.toast-msg');
+            const toast = toasts[toasts.length - 1];
+            const progressBar = toast.querySelector('.progress-bar');
+
+            progressBar.style.width = '100%';
+            for (let i = 100; i >= 0; i--) {
+                setTimeout(() => {
+                    progressBar.style.width = i + '%';
+                }, 50 * (100 - i));
+
+                if (i === 0) {
+                    setTimeout(() => {
+                        toast.style.display = 'none';
+                    }, 50 * (100 - i));
+                }
+            }
+        })();
+
+
+if (error!='')
+    div(class='toast toast-top toast-center toast-msg' role='alert')
+        div(class='alert alert-error items-center p-4 flex')
+            .flex-shrink-0
+                i.fas.fa-times-circle.text-2xl
+            .flex-1
+                .text-lg.font-bold
+                    | Oops!
+                .text-sm.my-3
+                    | #{error}
+                .w-full.rounded-full.mb-4(class='h-2.5')
+                    .bg-red-300.rounded-full.progress-bar(class='h-2.5' style='width: 100%')
+            
+
+
+    //- .fixed.flex.items-center.w-full.max-w-xs.p-4.space-x-4.text-white.bg-red-500.rounded-lg.shadow.bottom-5.right-5.space-x.toast-msg(role='alert')
+    //-     .flex-shrink-0
+    //-         i.fas.fa-times-circle.text-2xl
+    //-     .flex-1
+    //-         .text-lg.font-bold
+    //-             | Oops!
+    //-         .text-sm.my-3
+    //-             | #{error}
+    //-         .w-full.rounded-full.mb-4(class='h-2.5')
+    //-             .bg-red-300.rounded-full.progress-bar(class='h-2.5' style='width: 100%')
+    script.
+        (function() {
+            const toasts = document.querySelectorAll('.toast-msg');
+            const toast = toasts[toasts.length - 1];
+            const progressBar = toast.querySelector('.progress-bar');
+
+            progressBar.style.width = '100%';
+            for (let i = 100; i >= 0; i--) {
+                setTimeout(() => {
+                    progressBar.style.width = i + '%';
+                }, 50 * (100 - i));
+
+                if (i === 0) {
+                    setTimeout(() => {
+                        toast.style.display = 'none';
+                    }, 50 * (100 - i));
+                }
+            }
+        })();

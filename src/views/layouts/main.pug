@@ -1,0 +1,102 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    include ../partials/head
+
+  header
+    include ../partials/header
+
+  body
+    div(class='drawer lg:drawer-open')
+      input#main-drawer(type='checkbox', class='drawer-toggle')
+      div(class='drawer-content')
+        
+        // Navbar
+        nav(class='navbar w-full bg-base-300')
+          div.navbar-start
+            label(for='main-drawer', aria-label='open sidebar', class='btn btn-square')
+              // Sidebar toggle icon
+              svg(xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24', stroke-linejoin='round', stroke-linecap='round', stroke-width='2', fill='none', stroke='currentColor', class='my-1.5 inline-block size-5')
+                path(d='M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z')
+                path(d='M9 4v16')
+                path(d='M14 10l2 2l-2 2')
+            div(class='px-4') My dashboard
+          //upload button
+          div(class='navbar-end')
+            a(href='/upload' class='btn btn-primary')
+              i(class='fas fa-plus mr-2')
+              |Upload media
+        // Page content here
+        include ../partials/alerts
+        div.px-6.py-4
+          block content
+
+
+      div(class='drawer-side is-drawer-close:overflow-visible')
+        label(for='main-drawer', aria-label='close sidebar', class='drawer-overlay')
+        div(class='flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64')
+          // Sidebar content here
+          ul(class='menu w-full grow')
+
+            //- a(class='avatar flex justify-center is-drawer-open:hidden mt-4 mb-2 hover:border rounded-full' href='/settings/profile')
+            //-     div(class='rounded-full')
+            //-       img(src='https://img.daisyui.com/images/profile/demo/yellingcat@192.webp')
+
+            
+            a(class='avatar is-drawer-open:hidden' href='/settings/profile')
+                div(class='ring-primary hover:ring-offset-base-100 mt-4 mb-2 rounded-full hover:ring-2 hover:ring-offset-2')
+                  img(src='https://img.daisyui.com/images/profile/demo/yellingcat@192.webp')
+
+
+
+            div.w-full.px-4.pt-4.rounded-xl.items-center(class="is-drawer-close:hidden" href='/settings/profile')
+              div(class='avatar flex justify-center')
+                div(class='ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2')
+                  img(src='https://img.daisyui.com/images/profile/demo/yellingcat@192.webp')
+              div(class='font-bold text-center mb-4 items-center flex flex-col gap-2 mt-2')
+                span.text-2xl= user.username
+                //badge
+                div.items-center
+                  div(class='badge badge-outline')
+                    i(class='fas fa-shield mr-2')
+                    |Admin
+            a(class='btn btn-accent is-drawer-close:hidden' href='/settings/profile') View profile
+
+            div.divider
+            // List item
+            li
+              a(class='is-drawer-close:tooltip is-drawer-close:tooltip-right', data-tip='Overview' href='/dashboard' class= page === 'dashboard' ? 'menu-active' : '')
+                // Home icon
+                i(class='fas fa-home my-1.5 inline-block size-4')
+                span(class='is-drawer-close:hidden') Overview
+            // List item
+            li
+              a(class='is-drawer-close:tooltip is-drawer-close:tooltip-right', data-tip='My media' href='/dashboard/media' class= page === 'media' ? 'menu-active' : '')
+                // media icon
+                i(class='fas fa-photo-video my-1.5 inline-block size-4 text-center')
+                span(class='is-drawer-close:hidden') My media
+            li
+              a(class='is-drawer-close:tooltip is-drawer-close:tooltip-right', data-tip='Recycling Bin' href='/dashboard/bin' class= page === 'bin' ? 'menu-active' : '')
+                // media icon
+                i(class='fa-regular fa-trash-can my-1.5 inline-block size-4 text-center')
+                span(class='is-drawer-close:hidden') Recycling Bin
+            div.divider
+            li
+              a(class='is-drawer-close:tooltip is-drawer-close:tooltip-right', data-tip='Config generator' href='/dashboard/config-generator' class= page === 'config-generator' ? 'menu-active' : '')
+                // settings icon
+                i(class='fas fa-plug my-1.5 inline-block size-4 text-center')
+                span(class='is-drawer-close:hidden') Config Generator
+            li
+              a(class='is-drawer-close:tooltip is-drawer-close:tooltip-right', data-tip='Logout' href='/logout')
+                // media icon
+                i(class='fa-solid fa-sign-out-alt my-1.5 inline-block size-4 text-center')
+                span(class='is-drawer-close:hidden') Logout
+      
+
+    include ../partials/modals/uploadForm
+    include ../partials/mediaDock
+
+  footer
+    include ../partials/footer
+        
